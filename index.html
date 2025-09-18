@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHAMBHUNATH INSTITUE OF ENGINEERING AND TECHNOLOGY  Hackathon 2025</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #1e3c72;
+      --secondary: #2a5298;
+      --accent: #ff9800;
+      --light: #ffffff;
+      --dark: #0a1525;
+      --gray: #f5f5f5;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--light);
+      text-align: center;
+      line-height: 1.6;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Styles */
+    header {
+      padding: 60px 20px;
+      background: rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ff9800" fill-opacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+    }
+    
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    header p {
+      font-size: 1.3rem;
+      margin: 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    /* Navigation */
+    nav {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    
+    nav ul li {
+      margin: 5px 15px;
+    }
+    
+    nav ul li a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+    
+    nav ul li a:hover {
+      color: var(--accent);
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Section Styles */
+    section {
+      padding: 60px 20px;
+    }
+    
+    section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+    
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--accent);
+    }
+    
+    .section-dark {
+      background: rgba(0, 0, 0, 0.6);
+    }
+    
+    .section-light {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      margin: 30px auto;
+      max-width: 1200px;
+    }
+    
+    /* Countdown Timer */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    
+    .countdown-item {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+      min-width: 100px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .countdown-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .countdown-label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    
+    /* Button Styles */
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 30px;
+      background: var(--accent);
+      color: var(--light);
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      background: #e68900;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .btn:active {
+      transform: translateY(0);
+    }
+    
+    /* List Styles */
+    .rules-list {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .rules-list li {
+      margin-bottom: 15px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .rules-list li i {
+      margin-right: 15px;
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+    
+    /* Prizes Section */
+    .prizes-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .prize-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 30px;
+      width: 250px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+    }
+    
+    .prize-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .prize-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+    
+    .prize-name {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    
+    .prize-amount {
+      font-size: 1.5rem;
+      color: var(--accent);
+      font-weight: bold;
+    }
+    
+    /* Schedule Section */
+    .schedule-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    
+    .schedule-item {
+      background: rgba(255, 255, 255, 0.1);
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 4px solid var(--accent);
+    }
+    
+    .schedule-time {
+      font-weight: bold;
+      color: var(--accent);
+      margin-bottom: 5px;
+    }
+    
+    .schedule-activity {
+      font-size: 1.1rem;
+    }
+    
+    /* Judges Section */
+    .judges-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .judge-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      width: 200px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .judge-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid var(--accent);
+    }
+    
+    .judge-name {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .judge-role {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    
+    /* FAQ Section */
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    
+    .faq-item {
+      margin-bottom: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .faq-question {
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+    }
+    
+    .faq-answer {
+      padding: 15px 20px;
+      display: none;
+    }
+    
+    .faq-active .faq-answer {
+      display: block;
+    }
+    
+    /* Footer Styles */
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 30px 20px;
+      font-size: 0.9rem;
+    }
+    
+    .social-links {
+      margin: 20px 0;
+    }
+    
+    .social-links a {
+      display: inline-block;
+      margin: 0 10px;
+      color: var(--light);
+      font-size: 1.5rem;
+      transition: 0.3s;
+    }
+    
+    .social-links a:hover {
+      color: var(--accent);
+      transform: translateY(-3px);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      header p {
+        font-size: 1.1rem;
+      }
+      
+      .countdown-item {
+        min-width: 80px;
+        padding: 15px;
+      }
+      
+      .countdown-number {
+        font-size: 2rem;
+      }
+      
+      section h2 {
+        font-size: 1.8rem;
+      }
+      
+      .prize-card {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="logo">🚀</div>
+      <h1> SHAMBHUNATH INSTITUTE OF ENGINEERING AND TECHNOLOGY  Hackathon 2025</h1>
+      <p>Innovation | Technology | Creativity</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#prizes">Prizes</a></li>
+      <li><a href="#rules">Rules</a></li>
+      <li><a href="#judges">Judges</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#register">Register</a></li>
+    </ul>
+  </nav>
+
+  <section id="about">
+    <div class="container">
+      <h2>🎯 Event Details</h2>
+      <p><b>DATE :</b> 10-11 OCTOBER 2025</p>
+      <p><b>Venue:</b> Shambhunath Institute of Engineering and Technolohy</p>
+      <p>24 घंटे का Coding, Teamwork और Innovation का शानदार मौका!  
+         इसमें सभी छात्र अपनी टीम बनाकर Projects बनाएंगे।</p>
+      
+      <div class="countdown">
+        <div class="countdown-item">
+          <div class="countdown-number" id="days">00</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="hours">00</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="minutes">00</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="seconds">00</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+      
+      <a href="#register" class="btn">👉 Register NOW </a>
+    </div>
+  </section>
+
+  <section id="schedule" class="section-light">
+    <div class="container">
+      <h2>📅 Schedule</h2>
+      <div class="schedule-container">
+        <div class="schedule-item">
+          <div class="schedule-time">Day 1: 9:00 AM</div>
+          <div class="schedule-activity">Registration & Breakfast</div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">Day 1: 10:00 AM</div>
+          <div class="schedule-activity">Opening Ceremony & Keynote</div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">Day 1: 11:00 AM</div>
+          <div class="schedule-activity">Hacking Begins!</div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">Day 1: 1:00 PM</div>
+          <div class="schedule-activity">Lunch</div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">Day 1: 7:00 PM</div>
+          <div class="schedule-activity">Dinner</div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">Day 2: 8:00 AM</div>
+          <div class="schedule-activity">Breakfast</div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">Day 2: 11:00 AM</div>
+          <div class="schedule-activity">Hacking Ends - Submissions Due</div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">Day 2: 1:00 PM</div>
+          <div class="schedule-activity">Lunch & Judging</div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">Day 2: 3:00 PM</div>
+          <div class="schedule-activity">Closing Ceremony & Prize Distribution</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prizes" class="section-dark">
+    <div class="container">
+      <h2>🏆 Prizes</h2>
+      <div class="prizes-container">
+        <div class="prize-card">
+          <div class="prize-icon">🥇</div>
+          <div class="prize-name">First Prize</div>
+          <div class="prize-amount">₹15,000</div>
+          <p>+ Certificate + Trophy</p>
+        </div>
+        <div class="prize-card">
+          <div class="prize-icon">🥈</div>
+          <div class="prize-name">Second Prize</div>
+          <div class="prize-amount">₹8,000</div>
+          <p>+ Certificate + Trophy</p>
+        </div>
+        <div class="prize-card">
+          <div class="prize-icon">🥉</div>
+          <div class="prize-name">Third Prize</div>
+          <div class="prize-amount">₹3,000</div>
+          <p>+ Certificate + Trophy</p>
+        </div>
+      </div>
+      <p style="margin-top: 30px;">Special category prizes for innovation, design, and social impact!</p>
+    </div>
+  </section>
+
+  <section id="rules" class="section-light">
+    <div class="container">
+      <h2>📌 Rules & Guidelines</h2>
+      <ul class="rules-list">
+        <li><i class="fas fa-check-circle"></i> MAXIMUM 4 MEMBERS IN A TEAM </li>
+        <li><i class="fas fa-check-circle"></i> 24 घंटे के अंदर Project पूरा करना होगा</li>
+        <li><i class="fas fa-check-circle"></i>  EVERY TEAM HAVE THEIR LAPTOP</li>
+        <li><i class="fas fa-check-circle"></i> Innovative AND  Problem-Solving Ideas को प्राथमिकता दी जाएगी</li>
+        <!-- <li><i class="fas fa-check-circle"></i> All code must be written during the event (no prior work)</li> -->
+        <li><i class="fas fa-check-circle"></i> Respect all participants and maintain a positive environment</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="judges" class="section-dark">
+    <div class="container">
+      <h2>👨‍💻 Judges</h2>
+      <div class="judges-container">
+        <div class="judge-card">
+          <img src="https://via.placeholder.com/100" alt="Judge" class="judge-img">
+          <div class="judge-name">DR.RK SINGH </div>
+          <div class="judge-role">DIRECTOR,SIET </div>
+        </div>
+        <div class="judge-card">
+          <img src="https://via.placeholder.com/100" alt="Judge" class="judge-img">
+          <div class="judge-name">PRAKSHIT AGARWAL </div>
+          <div class="judge-role">HOD OF COMPUTER SCIENCE</div>
+        </div>
+        <div class="judge-card">
+          <img src="https://via.placeholder.com/100" alt="Judge" class="judge-img">
+          <div class="judge-name"> SATYAM SHUKLA </div>
+          <div class="judge-role">PROFESSOR</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section-light">
+    <div class="container">
+      <h2>❓ Frequently Asked Questions</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">
+            क्या मैं अकेले participate कर सकता हूँ?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            नहीं, इस event में टीम में participate करना होगा। टीम में 2 से 4 सदस्य होने चाहिए।
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            क्या college के बाहर के लोग participate कर सकते हैं?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            यह event primarily college के students के लिए है, लेकिन alumni special permission से participate कर सकते हैं।
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            क्या हमें अपनी problem statement पहले से choose करनी होगी?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            नहीं, आप event के day पर problem statement choose कर सकते हैं। हालांकि, आप पहले से ideas सोच सकते हैं।
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="register" class="section-dark">
+    <div class="container">
+      <h2>📝 Register Now</h2>
+      <p>Don't miss this opportunity to showcase your skills and win exciting prizes!</p>
+      <p>Registration closes on November 10, 2025</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc-_kjU5EUZYCa9vUEeWP2Xh2p0t9TzUcXXFY1wuLqbKLtPag/viewform?usp=dialog" class="btn">👉 Register Your Team</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <p>© 2025 Shambhunath Institute of Engineering and Technolohy Hackathon | Powered by CODESTROM@SIET</p>
+      <p>Email: hackathon@sambhunathcollege.edu.in | Phone: +91 XXXXX XXXXX</p>
+    </div>
+  </footer>
+
+  <script>
+    // Countdown Timer
+    function updateCountdown() {
+      const eventDate = new Date('November 15, 2025 09:00:00').getTime();
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      document.getElementById('days').innerText = days.toString().padStart(2, '0');
+      document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+    }
+    
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+    
+    // FAQ Toggle
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        item.classList.toggle('faq-active');
+      });
+    });
+    
+    // Smooth Scrolling for Navigation
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        window.scrollTo({
+          top: targetSection.offsetTop - 60,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
