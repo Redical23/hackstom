@@ -35,17 +35,18 @@
 
       
     }
-    body:: before{ 
-      content:" " ;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: url(IMG-20250916-WA0002.jpg ) no-repeat center center/cover;
-      opacity: 0.3;
-      z-index: -1;
-    }
+   body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("IMG-20250916-WA0002.jpg") no-repeat center center / cover;
+  opacity: 0.3;
+  z-index: -1;
+}
+
     
     .container {
       width: 100%;
@@ -258,15 +259,23 @@
       transform: translateY(-10px);
     }
     
-    .countdown-number {
-      font-size: 3rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-      background: linear-gradient(to right, var(--accent), #ff9d5c);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
+   .countdown-number {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, var(--accent), #ff9d5c);
+
+  /* Standard property */
+  background-clip: text;
+
+  /* Vendor prefixes */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Fallback (optional: makes text visible if clip isn't supported) */
+  color: var(--accent);
+}
+
     .countdown-label {
       font-size: 1rem;
       text-transform: uppercase;
@@ -877,62 +886,63 @@
     </div>
   </footer>
 
-  <script>
-    // Create floating particles
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 50;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        // Random size between 3px and 8px
-        const size = Math.random() * 5 + 3;
-        particle.style.width = ${size}px;
-        particle.style.height = ${size}px;
-        
-        // Random position
-        particle.style.left = ${Math.random() * 100}%;
-        particle.style.top = ${Math.random() * 100}%;
-        
-        // Random animation duration between 10s and 20s
-        const duration = Math.random() * 10 + 10;
-        particle.style.animationDuration = ${duration}s;
-        
-        // Random delay
-        const delay = Math.random() * 5;
-        particle.style.animationDelay = ${delay}s;
-        
-        particlesContainer.appendChild(particle);
-      }
+ <script>
+  // Create floating particles
+  function createParticles() {
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 50;
+
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+
+      // Random size between 3px and 8px
+      const size = Math.random() * 5 + 3;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+
+      // Random position
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+
+      // Random animation duration between 10s and 20s
+      const duration = Math.random() * 10 + 10;
+      particle.style.animationDuration = `${duration}s`;
+
+      // Random delay
+      const delay = Math.random() * 5;
+      particle.style.animationDelay = `${delay}s`;
+
+      particlesContainer.appendChild(particle);
     }
-    
-    // Countdown Timer
-    function updateCountdown() {
-      const eventDate = new Date('October 10, 2025 09:00:00').getTime();
-      const now = new Date().getTime();
-      const distance = eventDate - now;
-      
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      
-      document.getElementById('days').innerText = days.toString().padStart(2, '0');
-      document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
-      document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
-      document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
-    }
-    
-    // FAQ Toggle
+  }
+
+  // Countdown Timer
+  function updateCountdown() {
+    const eventDate = new Date('October 10, 2025 09:00:00').getTime();
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById('days').innerText = days.toString().padStart(2, '0');
+    document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+  }
+
+  // FAQ Toggle
+  document.addEventListener('DOMContentLoaded', function () {
     const faqQuestions = document.querySelectorAll('.faq-question');
-    
+
     faqQuestions.forEach(question => {
       question.addEventListener('click', () => {
         const item = question.parentElement;
         item.classList.toggle('faq-active');
-        
+
         // Rotate chevron icon
         const icon = question.querySelector('i');
         if (item.classList.contains('faq-active')) {
@@ -942,29 +952,29 @@
         }
       });
     });
-    
+
     // Smooth Scrolling for Navigation
     document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+      anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        
+
         const targetId = this.getAttribute('href');
         const targetSection = document.querySelector(targetId);
-        
+
         window.scrollTo({
           top: targetSection.offsetTop - 80,
           behavior: 'smooth'
         });
       });
     });
-    
+
     // Initialize
-    document.addEventListener('DOMContentLoaded', function() {
-      createParticles();
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
-    });
-  </script>
+    createParticles();
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  });
+</script>
+
 
 </body>
 </html>
